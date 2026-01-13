@@ -9,11 +9,12 @@ tag_assemble_close = angle_bracket[0] + "/" + tag_name + angle_bracket[1]
 def make_tag(isOpen):
     if isOpen == True:
         open = tag_assemble_open
-        return open + content + tag_assemble_close
+        return open
     else:
         close = tag_assemble_close
-        return tag_assemble_open + content + close
+        return close
 
 
-result = tag_assemble_open + content + tag_assemble_close
+result = make_tag(True) + content + make_tag(False)
+print(result)
 
