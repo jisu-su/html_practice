@@ -3,6 +3,8 @@
 <head> <!-- 설정 정보 넣기 -->
     <!-- 이 문서의 글자들은 UTF-8이라는 전 세계 표준 방식으로 암호화되어 있다는 것 -->
     <meta charset="UTF-8">
+    <!-- 비율 맞추기 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOO'S BLACK LINK TREE</title> <!-- 이름 정하기 -->
     <style>
         /* [CSS 영역: 디자인 담당] */
@@ -10,9 +12,10 @@
             background-color: #121212; /* 다크 모드 배경 */
             color: #ffffff; /* 글자: 흰색 */
             text-align: center; /* 모든 내용을 가운데로 정렬 */
-            font-family: 'Pretendard', sans-serif; /* 글꼴: 깔끔한 고딕체 */
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif; /* 글꼴: 깔끔한 고딕체, 폰트 풀백 */
             /* 만약 사용자의 컴퓨터에 'Pretendard'라는 폰트가 설치되어 있지 않을 경우를 대비한 '플랜 B' */
             padding: 50px 20px; /* 안쪽 여백: 위아래 50px, 좌우 20px씩 띄우기 */
+            margin: 0;
         }
 
         .profile-img { /* 이미지를 예쁘게 */
@@ -21,6 +24,13 @@
             border-radius: 50%; /* 핵심! 50%를 주면 사각형 사진이 원형이 됨 */
             border: 3px solid #bb86fc; /* 연보라색 테두리 3px 두께 */
             margin-bottom: 20px; /* 사진 아래 글자와의 간격 */
+            object-fit: cover; /* 사진이 찌그러지지 않게 방지 */
+        }
+
+        h1 {
+            font-size: 24px; /* 제목 크기 고정 */
+            margin-bottom: 30px; /* 아래쪽 공간 확보 */
+            letter-spacing: -0.5px; /* 자간 조절 */
         }
 
         .link-card { /* 버튼의 평소 모습 */
@@ -28,20 +38,22 @@
             background-color: #1e1e1e; /* 배경보다 약간 밝은 회색 (입체감) */
             color: #bb86fc; /* 글자색을 포인트 컬러인 보라색으로 */
             text-decoration: none; /* 링크 특유의 밑줄 제거 */
-            padding: 15px; /* 버튼 안쪽 공간 확보 */
-            margin: 10px auto; /* 버튼끼리 위아래 10px씩 띄우고 가운데 배치 */
+            padding: 16px; /* 버튼 안쪽 공간 확보 */
+            margin: 12px auto; /* 버튼끼리 위아래 12px씩 띄우고 가운데 배치 */
             width: 100%;
             max-width: 400px; /* 버튼이 너무 길어지지 않게 최대 너비 제한 */
             border-radius: 12px; /* 모서리를 부드럽게 깎음 */
             font-weight: bold; /* 글자 굵기 */
-            transition: 0.3s; /* 변화가 일어날 때 0.3초 동안 부드럽게! */
+            transition: all 0.3s ease; /* 색상뿐만 아니라 크기, 그림자 등 모든 변화(all)를 아주 부드러운 곡선 느낌(ease)으로 0.3초 동안 보여준다. */
             border: 1px solid #333; /* 테두리 1px 두께 */
+            box-sizing: border-box; /* 패딩이 너비에 영향을 주지 않게 설정*/
         }
 
         .link-card:hover { /* hover는 마우스를 올렸을 때만 발동하는 특수 상태 */
-            transform: scale(1.05); /* 버튼 크기를 1.05배로 살짝 키움 (두근두근 효과) */
+            transform: translateY(-3px); /* 위로 살짝 떠오르는 효과 */
             background-color: #bb86fc; /* 배경색을 보라색으로 변경 */
             color: #121212; /* 글자색을 어두운색으로 변경 (색상 반전) */
+            box-shadow: 0 10px 20px rgba(187, 134, 252, 0.3); /* 보라색 그림자 */
         }
 
         .video-container { /* 유투브 박스 */
@@ -50,22 +62,49 @@
             margin-left: auto; /* 가운데 정렬을 위한 공식 */
             margin-right: auto;
         }
+
+        .video-label {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #aaa;
+            display: block;
+        }
+
+        /* 반응형 비디오 박스 */
+        .iframe-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 비율 유지 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body> <!-- 웹사이트 방문자의 눈에 보이는 진짜 내용물들 -->
-    <img src="https://via.placeholder.com/120" alt="프로필" class="profile-img">
+    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=300" alt="프로필" class="profile-img">
     <h1>SOO.LOG</h1> <!-- 사이트 제목 -->
-
+    
+    <!-- 링크 카드들 -->
     <a href="https://github.com/jisu-su" target="_blank" class="link-card">✨ My GitHub</a>
     <a href="#" class="link-card">☕ Today's Python Code</a>
+    <a href="#" class="link-card">📝 Study Blog</a>
 
+    <!-- 유투브 섹션 -->
     <div class="video-container">
-        <p>🎧 오늘의 코딩 노동요</p>
+        <span class="video-label">🎧 오늘의 코딩 노동요</span>
+        <div class="iframe-wrapper">
         <!-- iframe : 내 페이지에서 다른 페이지를 액자처럼 끼워 넣기 -->
-        <iframe width="100%" height="225" src="https://www.youtube.com/embed/EoPdGjJDHuU" 
-                title="YouTube video player" frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen style="border-radius: 12px;"></iframe>
+        <iframe width="975" height="548" src="https://www.youtube.com/embed/EoPdGjJDHuU" title="사자왕자 '웃으며 안녕' Official MV" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
 </body>
 </html>
