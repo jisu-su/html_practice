@@ -15,7 +15,6 @@ def make_element(isOpen, tag_name, content):
     result = make_tag(isOpen, tag_name) + content + make_tag(not isOpen, tag_name)
     return result 
 
-
 result_element = make_element(True, "h1", content)
 print(result_element)
 
