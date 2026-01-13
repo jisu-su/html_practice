@@ -1,10 +1,8 @@
 
-tag_name = "h1"
 content = "고양이"
 
 
-
-def make_tag(isOpen):
+def make_tag(isOpen, tag_name):
     angle_bracket = ["<", ">"]
     slash = "/"
 
@@ -16,6 +14,6 @@ def make_tag(isOpen):
         return close
 
 
-result = make_tag(True) + content + make_tag(False)
+result = make_tag(True, "h1:") + content + make_tag(False, "h1")
 print(result)
 
