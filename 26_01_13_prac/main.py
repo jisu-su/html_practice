@@ -13,7 +13,7 @@ def make_tag(isOpen, tag_name):
         close = angle_bracket[0] + slash + tag_name + angle_bracket[1]
         return close
 
-
-result = make_tag(True, "h1:") + content + make_tag(False, "h1")
-print(result)
+for _ in range(100):
+    result = make_tag(True, "h1:") + content + make_tag(False, "h1")
+    print(result)
 
