@@ -67,7 +67,26 @@ def make_line(isOpen, tag_name):
     else:
         return angle_bracket[0] + slash + tag_name + angle_bracket[1]
 
-result = make_line(True, "h1") + content + make_line(False, "h1")
+result = make_line(True, "p") + content + make_line(False, "p")
 print (result)
+
+# Stage 6 : 고차 함수 만들기
+content = "Python is fun!"
+
+def make_sentence(isOpen, tag_name, content):
+    def make_line(isOpen, tag_name):
+        angle_bracket = ["<", ">"]
+        slash = "/"
+
+        if isOpen == True:
+            return angle_bracket[0] + tag_name + angle_bracket[1]
+        else:
+            return angle_bracket[0] + slash + tag_name + angle_bracket[1]
+    
+    result = make_line(True, tag_name) + content + make_line(False, tag_name)
+    return result
+
+result_sentence = make_sentence(True, "p", content)
+print(result)
 
 # Stage 7까지 진화시켜보세요!
