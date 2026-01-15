@@ -55,4 +55,19 @@ def make_line(isOpen):
 result = make_line(True) + content + make_line(False)
 print (result)
 
+# Stage 5: 매개변수로 확장
+content = "Python is fun!"
+
+def make_line(isOpen, tag_name):
+    angle_bracket = ["<", ">"]
+    slash = "/"
+
+    if isOpen == True:
+        return angle_bracket[0] + tag_name + angle_bracket[1]
+    else:
+        return angle_bracket[0] + slash + tag_name + angle_bracket[1]
+
+result = make_line(True, "h1") + content + make_line(False, "h1")
+print (result)
+
 # Stage 7까지 진화시켜보세요!
