@@ -7,7 +7,7 @@ content = "Python is fun!"
 angle_bracket = ["<", ">"]
 slash = "/"
 
-result = angle_bracket[0] + 
+result = "<" + tag_name + ">" + content + "<" + slash + tag_name + ">"
 
 # Stage 2: 패턴 발견
 
