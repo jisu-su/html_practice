@@ -36,5 +36,23 @@ def make_line(isOpen):
         return close
 
 result = make_line(True) + content + make_line(False)
+print (result)
+
+# Stage 4: 함수 내부로 로직 이동
+tag_name = "p"
+content = "Python is fun!"
+
+def make_line(isOpen):
+    #? 고정되는 값만 내부로 넣기
+    angle_bracket = ["<", ">"]
+    slash = "/"
+
+    if isOpen == True:
+        return angle_bracket[0] + tag_name + angle_bracket[1]
+    else:
+        return angle_bracket[0] + slash + tag_name + angle_bracket[1]
+
+result = make_line(True) + content + make_line(False)
+print (result)
 
 # Stage 7까지 진화시켜보세요!
