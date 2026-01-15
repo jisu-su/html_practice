@@ -88,5 +88,3 @@ def make_sentence(isOpen, tag_name, content):
 
 result_sentence = make_sentence(True, "p", content)
 print(result)
-
-# Stage 7까지 진화시켜보세요!
